@@ -5,6 +5,24 @@ const token = process.env.BOT_TOKEN;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const axios = require("axios");
 const fs = require("fs");
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+
+// ... code bot Discord Anda ...
+
+// Tambahkan di akhir file bot.js:
+app.get('/', (req, res) => {
+  res.send('🤖 YouTube Community Bot is running!');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime() });
+});
+
+app.listen(port, () => {
+  console.log(`✅ Bot online & listening on port ${port}`);
+});
 
 client.once("ready", () => {
     console.info("Ready!");
