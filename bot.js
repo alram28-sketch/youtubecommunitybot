@@ -35,7 +35,7 @@ client.once("ready", () => {
     const URL = `${process.env.YT_API_URL}${process.env.YT_CHANNEL_ID}`;
     // Call YT API every hour
     callAPI();
-    setInterval(callAPI, 3600000);
+    setInterval(callAPI, 1800000);
 
     // Axios GET Request
     function callAPI() {
