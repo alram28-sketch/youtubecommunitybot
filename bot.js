@@ -5,7 +5,13 @@ const token = process.env.BOT_TOKEN;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const axios = require("axios");
 const fs = require("fs");
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const SERVER_ID = process.env.SERVER_ID;
+const CHANNEL_ID = process.env.CHANNEL_ID;
+const YT_CHANNEL_ID = process.env.YT_CHANNEL_ID;
 
+// Gunakan variabel ini di bot Anda
+client.login(BOT_TOKEN);
 client.once("ready", () => {
     console.info("Ready!");
     // Get Discord Server Channel to post in
