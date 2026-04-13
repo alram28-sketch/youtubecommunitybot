@@ -11,7 +11,7 @@ const axios = require("axios");
 const fs = require("fs");
 const express = require('express');
 const app = express();
-const port = process.env.PORT || 3000;
+//const port = process.env.PORT || 3000;
 
 // ... code bot Discord Anda ...
 
