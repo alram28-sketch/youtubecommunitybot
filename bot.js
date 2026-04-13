@@ -1,35 +1,11 @@
 require("dotenv").config();
 
 const { Client, GatewayIntentBits, EmbedBuilder } = require("discord.js");
-const BOT_TOKEN = process.env.BOT_TOKEN;
-const SERVER_ID = process.env.SERVER_ID;
-const CHANNEL_ID = process.env.CHANNEL_ID;
-const YT_CHANNEL_ID = process.env.YT_CHANNEL_ID;
 const token = process.env.BOT_TOKEN;
 const client = new Client({ intents: [GatewayIntentBits.Guilds] });
 const axios = require("axios");
 const fs = require("fs");
-const express = require('express');
-const app = express();
-//const port = process.env.PORT || 3000;
 
-// ... code bot Discord Anda ...
-
-// Tambahkan di akhir file bot.js:
-app.get('/', (req, res) => {
-  res.send('🤖 YouTube Community Bot is running!');
-});
-
-app.get('/health', (req, res) => {
-  res.json({ status: 'ok', uptime: process.uptime() });
-});
-
-app.listen(port, () => {
-  console.log(`✅ Bot online & listening on port ${port}`);
-});
-
-// Gunakan variabel ini di bot Anda
-client.login(BOT_TOKEN);
 client.once("ready", () => {
     console.info("Ready!");
     // Get Discord Server Channel to post in
@@ -41,7 +17,7 @@ client.once("ready", () => {
     const URL = `${process.env.YT_API_URL}${process.env.YT_CHANNEL_ID}`;
     // Call YT API every hour
     callAPI();
-    setInterval(callAPI, 1800000);
+    setInterval(callAPI, 3600000);
 
     // Axios GET Request
     function callAPI() {
