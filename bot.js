@@ -9,6 +9,9 @@ const BOT_TOKEN = process.env.BOT_TOKEN;
 const SERVER_ID = process.env.SERVER_ID;
 const CHANNEL_ID = process.env.CHANNEL_ID;
 const YT_CHANNEL_ID = process.env.YT_CHANNEL_ID;
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 10000;
 
 // Gunakan variabel ini di bot Anda
 client.login(BOT_TOKEN);
@@ -124,3 +127,19 @@ client.once("ready", () => {
 });
 
 client.login(token);
+client.login(BOT_TOKEN);
+
+// ... code bot Discord Anda ...
+
+// Tambahkan di akhir file bot.js:
+app.get('/', (req, res) => {
+  res.send('🤖 YouTube Community Bot is running!');
+});
+
+app.get('/health', (req, res) => {
+  res.json({ status: 'ok', uptime: process.uptime() });
+});
+
+app.listen(port, () => {
+  console.log(`✅ Bot online & listening on port ${port}`);
+});
